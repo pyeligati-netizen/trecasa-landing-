@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Trecasa Interiors — Home Interiors in Hyderabad</title>
+<meta name="description" content="End-to-end home interiors in Hyderabad with premium designs & practical costs. VR walkthroughs, complete scope, accountable execution, and milestone-based payments.">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --green-900:#1B3B32; --green-700:#3F5F54; --gold-600:#C1A465;
+  --surface:#F7F6F4; --ink:#222; --muted:#555; --border:#E5E2DC;
+  --danger:#C23030; --white:#fff;
+}
+/* Base */
+*{box-sizing:border-box} html,body{margin:0;padding:0}
+body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);background:#fff;line-height:1.6}
+h1,h2,h3{font-family:"Playfair Display",serif;color:var(--green-900);margin:0 0 .5rem}
+h1{font-size:44px} h2{font-size:32px} h3{font-size:22px}
+.section{padding:72px 0} .container{max-width:1100px;margin:0 auto;padding:0 20px}
+
+/* ICONS (inline sprite) */
+.i{width:28px;height:28px;display:inline-block;vertical-align:middle}
+.i-lg{width:48px;height:48px}
+.i-xl{width:64px;height:64px}
+.i-sm{width:20px;height:20px}
+.icon{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.icon-solid{fill:currentColor;stroke:none}
+.icon-wrap{display:flex;align-items:center;gap:10px}
+.floating:hover{transform:translateY(-2px);transition:transform .15s ease}
+
+/* Header */
+.site-header{position:fixed;top:0;left:0;right:0;z-index:10;background:rgba(27,59,50,.65);backdrop-filter:saturate(140%) blur(8px);color:#fff}
+.header-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-family:"Playfair Display",serif;font-weight:700;letter-spacing:1px;color:#fff}
+.header-right{display:flex;align-items:center;gap:14px;color:#e9f0ee}
+.header-right .address{opacity:.95;display:flex;align-items:center;gap:8px}
+.header-right a{display:flex;align-items:center;gap:8px;color:#fff;text-decoration:none;font-weight:600;padding:6px 10px;border-radius:8px;border:1px solid rgba(255,255,255,.25)}
+.header-right a:hover{background:#fff;color:var(--green-900)}
+
+/* Hero */
+.hero{position:relative;height:86vh;min-height:560px;color:#fff;display:grid;place-items:center;text-align:center}
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.55)}
+.hero-overlay{position:relative;z-index:1;max-width:820px;margin-top:40px}
+.hero h1{color:var(--gold-600)}
+.subhead{color:#f8f8f8;margin:12px 0 20px}
+.cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-block;padding:14px 18px;border-radius:10px;text-decoration:none;font-weight:700;transition:transform .15s ease,box-shadow .2s ease,background .2s ease,color .2s ease}
+.btn-primary{background:var(--gold-600);color:#1b1b1b;box-shadow:0 6px 16px rgba(193,164,101,.35)}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 10px 22px rgba(193,164,101,.45)}
+.btn-outline{border:2px solid #fff;color:#fff}
+.btn-outline:hover{background:#fff;color:var(--green-900)}
+.cta-micro{opacity:.95;margin-top:8px;color:#f3f3f3;display:flex;gap:8px;justify-content:center;align-items:center}
+
+/* Section titles */
+.section-title{margin-bottom:22px;display:flex;align-items:center;gap:10px}
+
+/* USPs — centered square card with peeking next */
+#usps .container{max-width:900px}
+.slider{position:relative;padding:0 56px}
+.viewport{overflow:visible}
+.track{display:flex;gap:18px;transition:transform .5s ease;will-change:transform}
+.card{
+  flex:0 0 320px; height:320px;
+  border:1px solid var(--border); border-radius:16px; padding:20px; background:#fff;
+  box-shadow:0 8px 22px rgba(0,0,0,.06); position:relative; display:flex; flex-direction:column;
+}
+.card .card-head{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.card.peek{opacity:.45;filter:blur(.3px);transform:scale(.995)}
+.arrow{position:absolute; top:50%; transform:translateY(-50%); border:0; background:#fff; width:42px; height:42px; border-radius:50%; box-shadow:0 6px 18px rgba(0,0,0,.12); cursor:pointer;}
+.arrow.left{left:0} .arrow.right{right:0}
+
+/* Metrics */
+.metrics{background:var(--surface);padding:36px 0}
+.metrics-grid{display:grid;gap:14px;grid-template-columns:repeat(5,1fr)}
+.metric{background:#fff;border:1px solid var(--border);border-radius:12px;padding:16px;text-align:center}
+.metric .mi{display:flex;flex-direction:column;align-items:center;gap:8px}
+.metric strong{display:block;font-size:18px;color:var(--green-900)}
+.metric span{font-size:13px;color:var(--muted)}
+
+/* Stories */
+.section#stories .section-title{margin-bottom:14px}
+.stories-row{
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0,1fr));
+  gap:18px;
+}
+.story-card{
+  border:1px solid var(--border);
+  border-radius:14px;background:#fff;overflow:hidden
+}
+.story-card img{width:100%;height:200px;object-fit:cover}
+.story-meta{padding:12px}
+.story-meta h3{margin:0 0 6px}
+.meta{color:var(--muted);margin:0 0 6px}
+.quote{font-family:"Playfair Display",serif;color:var(--green-700);margin:0 0 10px}
+.story-meta .btn{border:1px solid var(--green-900);color:var(--green-900);background:#fff}
+.story-meta .btn:hover{background:var(--green-900);color:#fff}
+@media (max-width:900px){ .stories-row{grid-template-columns:1fr} }
+
+/* Modal */
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;align-items:center;justify-content:center;padding:20px;z-index:100}
+.modal.open{display:flex}
+.modal-content{background:#fff;max-width:980px;max-height:90vh;overflow:auto;border-radius:16px;border:1px solid var(--border)}
+.modal-header{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);padding:14px 22px}
+.modal-title{font-size:22px;margin:0}
+.modal-close{border:0;background:#fff;font-size:24px;cursor:pointer}
+.modal-body{padding:22px}
+
+/* Modal banner (title-card render backdrop) */
+.modal-hero{
+  position:relative;height:300px;overflow:hidden;border-bottom:1px solid var(--border)
+}
+.modal-hero img{width:100%;height:100%;object-fit:cover;display:block}
+.modal-hero .overlay{
+  position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,.55), rgba(0,0,0,0));
+}
+.modal-hero .hero-text{
+  position:absolute;left:22px;bottom:16px;right:22px;color:#fff;
+}
+.modal-hero .hero-text h3{color:#fff;margin:0 0 6px}
+.modal-hero .hero-text .title-card{font-style:italic;opacity:.95}
+
+/* Compilation (scatter only) */
+#compilation{position:relative;min-height:420px;padding:16px;border-top:1px solid var(--border)}
+#compScatter{position:relative;height:420px;border-radius:12px;overflow:hidden;background:#faf9f7}
+#compScatter img {
+  position:absolute;
+  width:240px;
+  height:160px;
+  object-fit:cover;
+  border:1px solid var(--border);
+  border-radius:10px;
+  cursor:grab;
+  transition:transform 0.2s ease;
+  touch-action:none; /* enable pinch-zoom & drag */
+}
+#compScatter img:active { cursor:grabbing; }
+
+/* Process & Payments — vertical timeline */
+.process{background:#fff}
+.timeline-vert{position:relative;margin:20px auto;max-width:900px}
+.timeline-vert::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:4px;background:var(--green-900);transform:translateX(-50%)}
+.step{position:relative;width:50%;padding:16px 24px}
+.step.left{left:0;text-align:right}
+.step.right{left:50%}
+.step .dot{position:absolute;top:22px;left:calc(50% - 7px);width:14px;height:14px;background:var(--gold-600);border-radius:50%;box-shadow:0 0 0 3px #fff}
+.step h3{margin-top:0}
+.badge{display:inline-block;background:var(--surface);border:1px solid var(--border);padding:6px 10px;border-radius:10px;margin-top:6px}
+.badge-accent{background:#fff3e0;border-color:#f3d3a2;color:#7a4c00}
+.center-note{text-align:center;margin-top:10px;color:var(--muted)}
+
+/* Red Dot */
+.reddot{background:var(--surface)}
+.reddot-inner{text-align:center;padding:52px 0}
+.dot-red{width:12px;height:12px;background:var(--danger);border-radius:50%;margin:0 auto 10px;animation:pulse 3s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
+.reddot-title{max-width:760px;margin:0 auto 8px}
+.reddot-copy{max-width:780px;margin:0 auto;color:var(--muted)}
+
+/* CTA */
+.cta{background:var(--green-900);color:#fff;text-align:center;padding:56px 0}
+.cta .btn-primary{background:var(--gold-600);color:#1b1b1b}
+.cta .btn-outline{border-color:#fff;color:#fff}
+.cta .btn-outline:hover{background:#fff;color:var(--green-900)}
+
+/* Lead Form */
+.form-section{background:#fff}
+.lead-form{display:grid;gap:12px;grid-template-columns:repeat(2,1fr);max-width:760px;margin:0 auto}
+.lead-form label{display:flex;flex-direction:column;gap:6px;font-weight:600}
+.lead-form input,.lead-form select{padding:10px 12px;border:1px solid var(--border);border-radius:10px;font:inherit}
+.form-actions{display:flex;justify-content:center}
+.form-note{text-align:center;color:var(--muted)}
+.assure{font-size:13px;color:var(--muted);text-align:center;margin-top:6px}
+
+/* Footer */
+.site-footer{background:#0f221d;color:#cfd7d4;padding:18px 0;text-align:center}
+.site-footer a{color:#e4e9e7;text-decoration:none}
+
+/* Responsive */
+@media (max-width:900px){
+  h1{font-size:34px} h2{font-size:26px}
+  .metrics-grid{grid-template-columns:repeat(2,1fr)}
+  .lead-form{grid-template-columns:1fr}
+  .hero{height:78vh}
+  .timeline-vert::before{left:8px;transform:none}
+  .step{width:100%;left:0;text-align:left}
+  .step .dot{left:2px}
+  .step.left{text-align:left}
+}
+</style>
+</head>
+<body>
+
+<!-- Inline SVG sprite (no external assets) -->
+<svg width="0" height="0" style="position:absolute;left:-9999px;visibility:hidden" aria-hidden="true">
+  <defs>
+    <!-- Basics -->
+    <symbol id="icon-location" viewBox="0 0 24 24" class="icon"><path d="M12 22s7-6.3 7-12a7 7 0 1 0-14 0c0 5.7 7 12 7 12z"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="icon-phone" viewBox="0 0 24 24" class="icon"><path d="M22 16.9v2a3 3 0 0 1-3.3 3A19.8 19.8 0 0 1 2 5.3 3 3 0 0 1 5 2h2a2 2 0 0 1 2 1.7 12.8 12.8 0 0 0 .7 2.8 2 2 0 0 1-.5 2L8 9a16 16 0 0 0 7 7l.5-.2a2 2 0 0 1 2 0 12.8 12.8 0 0 0 2.8.7A2 2 0 0 1 22 16.9z"/></symbol>
+    <symbol id="icon-whatsapp" viewBox="0 0 24 24" class="icon"><path d="M20.5 12a8.5 8.5 0 0 1-12 7.6L4 21l1.4-3.9A8.5 8.5 0 1 1 20.5 12z"/><path class="icon-solid" d="M16.9 14.5c-.2.5-1.1 1-1.6 1s-.9.2-2.7-.9-2.9-2.6-3-3s-.1-1 .5-1.6c.2-.2.4-.5.5-.7s.1-.3 0-.5-.9-2.1-1.2-2.8c-.3-.7-.6-.6-.8-.6h-.7c-.2 0-.5.1-.7.3-.2.2-1 1-1 2.5s1 2.9 1.2 3.1c.2.2 2 3.1 4.8 4.2 2.9 1.1 2.9.7 3.4.7.6 0 1.8-.6 2-1.3.3-.6.3-1.1.2-1.3-.1-.2-.3-.3-.6-.4z"/></symbol>
+
+    <!-- Section & USP icons -->
+    <symbol id="icon-badge" viewBox="0 0 24 24" class="icon"><path d="M12 3l3 3 4-.5-1 4 3 2.5-3 2.5 1 4-4-.5-3 3-3-3-4 .5 1-4-3-2.5L7 9.5l-1-4 4 .5 2-2z"/></symbol>
+    <symbol id="icon-rupee" viewBox="0 0 24 24" class="icon"><path d="M6 4h10M6 8h10M6 8a6 6 0 0 0 6 6H8l8 6"/></symbol>
+    <symbol id="icon-onepartner" viewBox="0 0 24 24" class="icon">
+      <path d="M3 11l9-7 9 7v8a2 2 0 0 1-2 2h-3a2 2 0 0 1-2-2v-4H10v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+      <path d="M12 5v2M18 10l2 2M6 10l-2 2"/>
+    </symbol>
+    <symbol id="icon-promise" viewBox="0 0 24 24" class="icon">
+      <path d="M12 3l3 3h4v4l3 3-3 3v4h-4l-3 3-3-3H5v-4l-3-3 3-3V6h4z"/>
+      <path d="M9 12l2 2 4-4"/>
+    </symbol>
+    <symbol id="icon-oneinhundred" viewBox="0 0 24 24" class="icon">
+      <path d="M4 6h16M4 10h16M4 14h16M4 18h10"/>
+      <path d="M18 16l2 2M20 16l-2 2"/>
+      <path d="M12 16l1.5 1 .5 1.7L12 18l-2 .7.5-1.7z"/>
+    </symbol>
+
+    <!-- Section titles -->
+    <symbol id="icon-family" viewBox="0 0 24 24" class="icon">
+      <circle cx="8" cy="8" r="2"/><circle cx="16" cy="7" r="2"/>
+      <path d="M2 20a6 6 0 0 1 12 0M10 20a5 5 0 0 1 10 0"/>
+    </symbol>
+    <symbol id="icon-tools" viewBox="0 0 24 24" class="icon">
+      <path d="M14 7l3-3 3 3-3 3z"/><path d="M2 22l7-7M7 11l6 6"/>
+      <path d="M12 2a5 5 0 0 0 5 5"/>
+    </symbol>
+
+    <!-- Process specific -->
+    <symbol id="icon-handshake" viewBox="0 0 24 24" class="icon"><path d="M7 14l3 3 7-7M2 9l5 5m15-5l-5 5M8 7l4 4 4-4"/></symbol>
+    <symbol id="icon-vr" viewBox="0 0 24 24" class="icon"><rect x="3" y="7" width="18" height="10" rx="3"/><circle cx="9" cy="12" r="1.5"/><circle cx="15" cy="12" r="1.5"/></symbol>
+    <symbol id="icon-hammer" viewBox="0 0 24 24" class="icon"><path d="M18 2l4 4-3 3-4-4z"/><path d="M11 9L2 18l4 4 9-9"/></symbol>
+    <symbol id="icon-hardhat" viewBox="0 0 24 24" class="icon">
+      <path d="M3 18v-2a9 9 0 0 1 18 0v2"/><path d="M12 9V5"/><path d="M7 10v-1"/><path d="M17 10v-1"/><path d="M3 18h18"/>
+    </symbol>
+    <symbol id="icon-qc" viewBox="0 0 24 24" class="icon">
+      <path d="M12 2l3 3h4v4l3 3-3 3v4h-4l-3 3-3-3H5v-4l-3-3 3-3V5h4z"/>
+      <path d="M8.5 12l2.5 2.5L16 9.5"/>
+    </symbol>
+
+    <!-- Metrics / misc reused -->
+    <symbol id="icon-clock" viewBox="0 0 24 24" class="icon"><circle cx="12" cy="12" r="9"/><path d="M12 7v6l4 2"/></symbol>
+    <symbol id="icon-percent" viewBox="0 0 24 24" class="icon"><path d="M19 5L5 19"/><circle cx="7" cy="7" r="2"/><circle cx="17" cy="17" r="2"/></symbol>
+    <symbol id="icon-sofa" viewBox="0 0 24 24" class="icon"><rect x="3" y="10" width="18" height="6" rx="2"/><path d="M5 16v3M19 16v3"/></symbol>
+    <symbol id="icon-envelope" viewBox="0 0 24 24" class="icon"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></symbol>
+  </defs>
+</svg>
+
+<!-- Header -->
+<header class="site-header">
+  <div class="container header-inner">
+    <div class="logo">TRECASA</div>
+    <div class="header-right">
+      <span class="address">
+        <svg class="i icon"><use href="#icon-location"/></svg> Miyapur, Hyderabad
+      </span>
+      <a href="tel:+919059584422" title="Call" class="floating">
+        <svg class="i icon"><use href="#icon-phone"/></svg> +91-9059584422
+      </a>
+      <a target="_blank" class="floating" href="https://wa.me/919059584422?text=Hi%20Trecasa%2C%20I%20want%20a%20design%20consultation." title="WhatsApp">
+        <svg class="i icon"><use href="#icon-whatsapp"/></svg> WhatsApp
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- Hero -->
+<section id="hero" class="hero">
+  <!-- Place these files: /assets/hero-720.webm, /assets/hero-720.mp4, /assets/hero-poster.jpg -->
+  <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="assets/hero-poster.jpg">
+    <source src="assets/hero-720.webm" type="video/webm">
+    <source src="assets/hero-720.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay container">
+    <h1>End-to-End Home Interiors in Hyderabad with Premium Designs &amp; Affordable Costing.</h1>
+    <p class="subhead">From modular kitchens to ceilings and styling, we design every corner of your Hyderabad home personally and execute it with care.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#lead-form">Get My Free Quote &amp; Design Session</a>
+      <a class="btn btn-outline" target="_blank" href="https://wa.me/919059584422?text=Hi%20Trecasa%2C%20I%20want%20a%20design%20consultation.">Chat on WhatsApp</a>
+    </div>
+    <p class="cta-micro">
+      <svg class="i-sm icon"><use href="#icon-envelope"/></svg>
+      A designer will connect within working hours — plus get a 60s preview of your design.
+    </p>
+  </div>
+</section>
+
+<!-- USPs -->
+<section id="usps" class="section">
+  <div class="container">
+    <h2 class="section-title"><svg class="i icon"><use href="#icon-badge"/></svg> Why Trecasa</h2>
+    <div class="slider">
+      <button class="arrow left" aria-label="Previous">&#10094;</button>
+      <div class="viewport">
+        <div class="track" id="uspTrack">
+          <article class="card">
+            <div class="card-head">
+              <svg class="i-lg icon"><use href="#icon-rupee"/></svg>
+              <h3>Design-Heavy. Budget-Smart.</h3>
+            </div>
+            <p>We begin by understanding your style, then map materials and finishes with smart alternatives — right at the initial quote itself. Every rupee is placed where it matters most, so you get the look you want without overspending.</p>
+          </article>
+          <article class="card">
+            <div class="card-head">
+              <svg class="i-lg icon"><use href="#icon-onepartner"/></svg>
+              <h3>One Partner. Every Detail.</h3>
+            </div>
+            <p>We handle true end-to-end interiors — from modulars and ceilings to on-site custom work and styling. You get a single point of contact guiding everything, right until your home is fully delivered.</p>
+          </article>
+          <article class="card">
+            <div class="card-head">
+              <svg class="i-lg icon"><use href="#icon-promise"/></svg>
+              <h3>We Don’t Disappear After Design.</h3>
+            </div>
+            <p>The best designs fail if execution goes wrong. At Trecasa, your VR design intent is carried through to reality. Our project managers remain on-site till the last hinge clicks — accountability from start to handover.</p>
+          </article>
+          <article class="card">
+            <div class="card-head">
+              <svg class="i-lg icon"><use href="#icon-oneinhundred"/></svg>
+              <h3>Not 100 Homes. Just Yours.</h3>
+            </div>
+            <p>Unlike assembly-line firms with cookie-cutter outputs, Trecasa takes on fewer projects. That way, we can personalise, refine, and perfect every detail — just like our Red Dot philosophy.</p>
+          </article>
+        </div>
+      </div>
+      <button class="arrow right" aria-label="Next">&#10095;</button>
+    </div>
+  </div>
+</section>
+
+<!-- Metrics -->
+<section id="metrics" class="metrics">
+  <div class="container metrics-grid">
+    <div class="metric"><div class="mi"><svg class="i-lg icon"><use href="#icon-communities"/></svg>
+      <strong>350+ Happy Homes in Hyderabad</strong><span>Backed by 10+ years of trust and design excellence.</span></div></div>
+    <div class="metric"><div class="mi"><svg class="i-lg icon"><use href="#icon-clock"/></svg>
+      <strong>45-Day Delivery Promise</strong><span>Or we pay ₹5,000 per week — accountability guaranteed.</span></div></div>
+    <div class="metric"><div class="mi"><svg class="i-lg icon"><use href="#icon-percent"/></svg>
+      <strong>&lt;3% Cost Deviation</strong><span>Transparent BOQs and milestone-based payments.</span></div></div>
+    <div class="metric"><div class="mi"><svg class="i-lg icon"><use href="#icon-vr"/></svg>
+      <strong>VR Walkthroughs Before Build</strong><span>See your home in 360° and finalise details upfront.</span></div></div>
+    <div class="metric"><div class="mi"><svg class="i-lg icon"><use href="#icon-sofa"/></svg>
+      <strong>Preferred by Top Communities</strong><span>Jayabheri, My Home, Aparna &amp; more.</span></div></div>
+  </div>
+</section>
+
+<!-- Stories -->
+<section id="stories" class="section">
+  <div class="container">
+    <h2 class="section-title"><svg class="i icon"><use href="#icon-family"/></svg> Recent Client Stories</h2>
+    <div class="stories-row">
+      <!-- Sarath -->
+      <article class="story-card" data-story="sarath">
+        <img src="C:\Trecasa Landing\trecasa-landing\images\thumbnail.png" alt="Sarath — Jayabheri Nirvana">
+        <div class="story-meta">
+          <h3>Sarath’s Home — Jayabheri Nirvana</h3>
+          <p class="meta">3BHK • Hidden Doors &amp; Entertainer’s Nook</p>
+          <p class="quote">“A plan woven by flow, not fragments.”</p>
+          <button class="btn open-story">View Full Story</button>
+        </div>
+      </article>
+      <!-- Bhagyesh -->
+      <article class="story-card" data-story="bhagyesh">
+        <img src="assets/stories/bhagyesh/thumb.jpg" alt="Bhagyesh — Thimus’ King Court">
+        <div class="story-meta">
+          <h3>Bhagyesh’s Home — Thimus’ King Court</h3>
+          <p class="meta">3BHK • Two-Tone Minimalism • Soft Curves</p>
+          <p class="quote">“Restraint drawn as geometry, softened by curve.”</p>
+          <button class="btn open-story">View Full Story</button>
+        </div>
+      </article>
+      <!-- Sanjeev -->
+      <article class="story-card" data-story="sanjeev">
+        <img src="assets/stories/sanjeev/thumb.jpg" alt="Sanjeev — Econest Primark">
+        <div class="story-meta">
+          <h3>Sanjeev’s Home — Econest Primark</h3>
+          <p class="meta">3BHK • Kitchen Extension &amp; Curved Kids’ Wardrobe</p>
+          <p class="quote">“Utility shaped as grace, square foot by square foot.”</p>
+          <button class="btn open-story">View Full Story</button>
+        </div>
+      </article>
+      <!-- Pavan — add later -->
+    </div>
+  </div>
+</section>
+
+<!-- Modal -->
+<div class="modal" id="storyModal" aria-hidden="true">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3 class="modal-title">Client Story</h3>
+      <button class="modal-close" aria-label="Close">&times;</button>
+    </div>
+    <div class="modal-hero" id="modalHero">
+      <img alt="" id="modalHeroImg">
+      <div class="overlay"></div>
+      <div class="hero-text">
+        <h3 id="modalHeroTitle">Client Story</h3>
+        <div class="title-card" id="modalHeroLine"></div>
+      </div>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+
+    <!-- Scatter-only compilation -->
+    <div id="compilation">
+      <div id="compScatter"></div>
+      <p style="color:var(--muted);margin-top:10px;font-size:13px">
+        Tip: drag images to move, <strong>pinch</strong> (touch) or <strong>scroll</strong> (mouse) to zoom. Press <strong>Esc</strong> to close.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- Process & Payments -->
+<section id="process" class="section process">
+  <div class="container">
+    <h2 class="section-title" style="justify-content:center"><svg class="i icon"><use href="#icon-tools"/></svg> Work Structure</h2>
+    <div class="timeline-vert">
+      <div class="step left">
+        <div class="dot"></div>
+        <h3 class="icon-wrap"><svg class="i icon"><use href="#icon-handshake"/></svg> Phase 1: Consultation &amp; Quote (3–5 Days)</h3>
+        <p>Meet us, share your story, and get design + budget options.</p>
+        <p class="badge"><strong>Payment:</strong> 10% Token Advance — locks your project, covers consultation, site checks, and onboarding.</p>
+      </div>
+      <div class="step right">
+        <div class="dot"></div>
+        <h3 class="icon-wrap"><svg class="i icon"><use href="#icon-vr"/></svg> Phase 2: Design in VR (1–2 Weeks)</h3>
+        <p>Renders, palettes, VR walkthroughs → iterate until final approval.</p>
+        <p class="badge"><strong>Payment:</strong> 60% on Design Finalisation — after you approve final layouts + BOQ.</p>
+      </div>
+      <div class="step left">
+        <div class="dot"></div>
+        <h3 class="icon-wrap"><svg class="i icon"><use href="#icon-hardhat"/></svg> Phase 3: Execution &amp; Build (45–60 Days)</h3>
+        <p>If factory-made: production starts, site prepared in parallel. If on-site: materials arrive, work begins immediately.</p>
+        <p class="badge"><strong>Payment:</strong> 25% During Execution — tied to major installation milestones.</p>
+        <p class="badge badge-accent">Delivery Promise: 45 days or ₹5,000/week penalty for delay.</p>
+      </div>
+      <div class="step right">
+        <div class="dot"></div>
+        <h3 class="icon-wrap"><svg class="i icon"><use href="#icon-qc"/></svg> Phase 4: Quality &amp; Handover</h3>
+        <p>Internal checks + your walkthrough. Handover only after fixes + your green light.</p>
+        <p class="badge"><strong>Payment:</strong> 5% Final Handover — released only after snag fixes. Unlike most companies, we hold back 5% until you’re 100% satisfied.</p>
+      </div>
+    </div>
+    <p class="center-note">Process and payments shown side-by-side along a central timeline for full clarity.</p>
+  </div>
+</section>
+
+<!-- Red Dot -->
+<section id="reddot" class="reddot">
+  <div class="container reddot-inner">
+    <div class="dot-red" aria-hidden="true"></div>
+    <h2 class="reddot-title">Every home deserves a focal point — one detail that makes it yours.</h2>
+    <p class="reddot-copy">In every space, the eye looks for a point to rest. That’s the Red Dot — a detail so intentional, it defines the whole design. Sometimes it’s a crafted edge, sometimes a curve, sometimes just the way light falls. Small, but powerful enough to make the space unforgettable.</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta" class="cta">
+  <div class="container cta-inner">
+    <h2 class="icon-wrap" style="justify-content:center">
+      <svg class="i icon"><use href="#icon-envelope"/></svg> Stop scrolling interiors. Start building yours.
+    </h2>
+    <p>From ideas to VR previews — your dream home is just one step away.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#lead-form">Get My Free Quote &amp; Design Session</a>
+      <a class="btn btn-outline" target="_blank" href="https://wa.me/919059584422?text=Hi%20Trecasa%2C%20I%20want%20a%20design%20consultation.">Chat on WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- Lead Form -->
+<section id="lead-form" class="section form-section">
+  <div class="container">
+    <h2 class="section-title" style="justify-content:center">
+      <svg class="i icon"><use href="#icon-envelope"/></svg> Get Your Free Quote &amp; Design Session
+    </h2>
+    <form class="lead-form" name="lead" method="post">
+      <label>Full Name <input type="text" name="name" required></label>
+      <label>Phone <input type="tel" name="phone" required pattern="[0-9]{10}" placeholder="10-digit number"></label>
+      <label>Email <input type="email" name="email"></label>
+      <label>Property Location <input type="text" name="location" required></label>
+      <label>Configuration
+        <select name="config" required>
+          <option value="">Select</option><option>2BHK</option><option>3BHK</option><option>4BHK</option><option>Villa</option>
+        </select>
+      </label>
+      <div class="form-actions">
+        <button class="btn btn-primary" type="submit">Let’s Start</button>
+      </div>
+      <p class="form-note">We’ll call within working hours.</p>
+      <p class="assure">No spam. No endless sales calls. Just a designer who actually listens.</p>
+    </form>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="container">
+    <p>
+      <svg class="i-sm icon"><use href="#icon-location"/></svg> Miyapur, Hyderabad •
+      <a href="tel:+919059584422"><svg class="i-sm icon"><use href="#icon-phone"/></svg> +91-9059584422</a>
+    </p>
+  </div>
+</footer>
+
+<script>
+/* ===== USPs slider ===== */
+const track = document.getElementById('uspTrack');
+const slides = Array.from(track.querySelectorAll('.card'));
+const prev = document.querySelector('#usps .arrow.left');
+const next = document.querySelector('#usps .arrow.right');
+let current = 0;
+function setStates(){
+  slides.forEach((s,i)=> s.classList.toggle('peek', i !== current));
+  const w = slides[0].getBoundingClientRect().width + 18;
+  const containerWidth = track.parentElement.getBoundingClientRect().width;
+  const offset = (containerWidth - w)/2;
+  track.style.transform = `translateX(${offset - current*w}px)`;
+}
+function goNext(){ current = (current + 1) % slides.length; setStates(); }
+function goPrev(){ current = (current - 1 + slides.length) % slides.length; setStates(); }
+let timer = setInterval(goNext, 4000);
+function resetTimer(){ clearInterval(timer); timer = setInterval(goNext, 4000); }
+next?.addEventListener('click', ()=>{ goNext(); resetTimer(); });
+prev?.addEventListener('click', ()=>{ goPrev(); resetTimer(); });
+window.addEventListener('resize', setStates);
+setStates();
+
+/* ------- STORIES DATA ------- */
+const stories = {
+  sarath: {
+    title: "Sarath’s Home — Jayabheri Nirvana",
+    line: "A plan woven by flow, not fragments.",
+    meta: "3BHK • Hidden Doors • Entertainer’s Nook",
+    body: `
+      <h4>The Intent</h4>
+      <p>A family space that stays warm yet disciplined — where dining, living, and work corners merge without clutter, every surface flowing into the next.</p>
+      <h4>Design Moves</h4>
+      <ul>
+        <li>The <strong>study dissolved into an Entertainer’s Nook</strong>, stitched inside the dining zone so the home could host without losing quiet.</li>
+        <li><strong>Flush, hidden doors</strong> wrapped around the dining wall — surfaces reading as planes, not junctions.</li>
+        <li><strong>Layered ceiling bands with recessed lighting</strong> — light guiding proportion, not decoration.</li>
+        <li>Muted veneers and stone — grounding the common areas without calling attention to themselves.</li>
+      </ul>
+      <h4>The Outcome</h4>
+      <p>At the heart of the home, many functions meet — dining, work, passage, and leisure — yet the space reads as one continuous gesture.</p>
+    `,
+    banner: "assets/stories/sarath/banner.jpg",
+    images: [
+      "assets/stories/sarath/moodboard.jpg",
+      "assets/stories/sarath/render-1.jpg",
+      "assets/stories/sarath/render-2.jpg"
+    ]
+  },
+  bhagyesh: {
+    title: "Bhagyesh’s Home — Thimus’ King Court",
+    line: "Restraint drawn as geometry, softened by curve.",
+    meta: "3BHK • Two-Tone Minimalism • Soft Curves",
+    body: `
+      <h4>The Intent</h4>
+      <p>Minimalism not as emptiness, but as precision — a home held to two tones where every line has to justify its place.</p>
+      <h4>Design Moves</h4>
+      <ul>
+        <li>The <strong>TV unit tucked behind the entrance door</strong>, freeing the prime wall to hold scale, light, and proportion.</li>
+        <li><strong>Curved corners</strong> on cabinetry and partitions — easier circulation, kinder edges.</li>
+        <li>Palette disciplined to <strong>two tones</strong> — texture and light do the rest.</li>
+      </ul>
+      <h4>The Outcome</h4>
+      <p>Fewer materials, fewer colors — each decision carries weight. Simplicity here isn’t absence; it’s control.</p>
+
+      <!-- Testimonial (add files later to show) -->
+      <div class="testimonial-video">
+        <video controls preload="none" poster="assets/stories/bhagyesh/testimonial-poster.jpg" style="width:100%;border-radius:12px;margin-top:16px;background:#000;max-height:420px;object-fit:cover">
+          <source src="assets/stories/bhagyesh/testimonial.webm" type="video/webm">
+          <source src="assets/stories/bhagyesh/testimonial.mp4" type="video/mp4">
+          Your browser does not support video playback.
+        </video>
+      </div>
+    `,
+    banner: "assets/stories/bhagyesh/banner.jpg",
+    images: [
+      "assets/stories/bhagyesh/moodboard.jpg",
+      "assets/stories/bhagyesh/render-1.jpg",
+      "assets/stories/bhagyesh/render-2.jpg"
+    ]
+  },
+  sanjeev: {
+    title: "Sanjeev’s Home — Econest Primark",
+    line: "Utility shaped as grace, square foot by square foot.",
+    meta: "3BHK • Kitchen Extension • Curved Kids’ Wardrobe",
+    body: `
+      <h4>The Intent</h4>
+      <p>A family home that works harder within its footprint — pastel calm layered over practical moves.</p>
+      <h4>Design Moves</h4>
+      <ul>
+        <li><strong>Kitchen extended</strong> by measured borrowing from the pooja — capacity up, balance intact.</li>
+        <li><strong>Kids’ wardrobe</strong> in varying depths with soft curves — movement cleared behind the door.</li>
+        <li>Palette tuned to <strong>pastel earth tones</strong> for warmth without heaviness.</li>
+      </ul>
+      <h4>The Outcome</h4>
+      <p>Storage added, circulation eased — a light plan that still works hard.</p>
+    `,
+    banner: "assets/stories/sanjeev/banner.jpg",
+    images: [
+      "assets/stories/sanjeev/moodboard.jpg",
+      "assets/stories/sanjeev/render-1.jpg",
+      "assets/stories/sanjeev/render-2.jpg"
+    ]
+  }
+};
+
+/* ------- MODAL / RENDERING ------- */
+const modal = document.getElementById('storyModal');
+const modalBody = document.getElementById('modalBody');
+const modalClose = document.querySelector('.modal-close');
+const modalHeroImg = document.getElementById('modalHeroImg');
+const modalHeroTitle = document.getElementById('modalHeroTitle');
+const modalHeroLine = document.getElementById('modalHeroLine');
+const compScatter = document.getElementById('compScatter');
+
+let zCounter = 100; // bring dragged img to top
+let activeKey = null;
+
+document.querySelectorAll('.open-story').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    const key = btn.closest('.story-card').getAttribute('data-story');
+    openStory(key);
+  });
+});
+
+function openStory(key){
+  activeKey = key;
+  const s = stories[key];
+  modalHeroImg.src = s.banner;
+  modalHeroImg.alt = s.title;
+  modalHeroTitle.textContent = s.title;
+  modalHeroLine.textContent = s.line;
+
+  modalBody.innerHTML = `<p class="meta"><strong>${s.meta}</strong></p>${s.body}`;
+
+  // Build scatter dump
+  compScatter.innerHTML = '';
+  const box = compScatter.getBoundingClientRect();
+  const W = box.width || 900, H = box.height || 420;
+
+  (s.images || []).forEach(src => {
+    const img = document.createElement('img');
+    img.src = src; img.alt = '';
+    randomizePosition(img, W, H);
+    enableInteract(img, compScatter);
+    compScatter.appendChild(img);
+  });
+
+  modal.classList.add('open');
+  modal.setAttribute('aria-hidden','false');
+}
+
+function randomizePosition(el, W, H){
+  const pad = 12;
+  const maxX = Math.max(0, W - 240 - pad);
+  const maxY = Math.max(0, H - 160 - pad);
+  el.style.left = (pad + Math.random()*maxX) + 'px';
+  el.style.top  = (pad + Math.random()*maxY) + 'px';
+  el.dataset.rot = (Math.random()*8 - 4).toFixed(2);
+  el.dataset.scale = '1';
+  applyTransform(el);
+}
+
+function applyTransform(el){
+  const r = parseFloat(el.dataset.rot || '0');
+  const s = parseFloat(el.dataset.scale || '1');
+  el.style.transform = `rotate(${r}deg) scale(${s})`;
+}
+
+function enableInteract(el, container){
+  el.style.zIndex = ++zCounter;
+  let pointers = new Map();
+  let dragging = false;
+  let startX=0, startY=0, origLeft=0, origTop=0;
+  let pinchStartDist = 0, pinchStartScale = 1;
+
+  el.addEventListener('pointerdown', e=>{
+    el.setPointerCapture(e.pointerId);
+    pointers.set(e.pointerId, {x:e.clientX, y:e.clientY});
+    el.style.zIndex = ++zCounter;
+
+    if(pointers.size === 1){
+      dragging = true;
+      startX = e.clientX; startY = e.clientY;
+      const rect = el.getBoundingClientRect();
+      const crect = container.getBoundingClientRect();
+      origLeft = rect.left - crect.left;
+      origTop  = rect.top  - crect.top;
+    } else if(pointers.size === 2){
+      dragging = false;
+      const pts = [...pointers.values()];
+      pinchStartDist = Math.hypot(pts[0].x - pts[1].x, pts[0].y - pts[1].y);
+      pinchStartScale = parseFloat(el.dataset.scale || '1');
+    }
+  });
+
+  el.addEventListener('pointermove', e=>{
+    if(!pointers.has(e.pointerId)) return;
+    pointers.set(e.pointerId, {x:e.clientX, y:e.clientY});
+
+    if(pointers.size === 1 && dragging){
+      const p = [...pointers.values()][0];
+      const dx = p.x - startX;
+      const dy = p.y - startY;
+      el.style.left = (origLeft + dx) + 'px';
+      el.style.top  = (origTop  + dy) + 'px';
+    } else if(pointers.size === 2){
+      const pts = [...pointers.values()];
+      const dist = Math.hypot(pts[0].x - pts[1].x, pts[0].y - pts[1].y);
+      let scale = pinchStartScale * (dist / Math.max(1, pinchStartDist));
+      scale = Math.min(Math.max(0.5, scale), 3);
+      el.dataset.scale = scale.toFixed(3);
+      applyTransform(el);
+    }
+  });
+
+  const end = (e)=>{
+    pointers.delete(e.pointerId);
+    if(pointers.size === 0) dragging = false;
+  };
+  el.addEventListener('pointerup', end);
+  el.addEventListener('pointercancel', end);
+  el.addEventListener('lostpointercapture', end);
+
+  // Mouse wheel zoom
+  el.addEventListener('wheel', e=>{
+    e.preventDefault();
+    let scale = parseFloat(el.dataset.scale || '1');
+    scale += (e.deltaY < 0) ? 0.1 : -0.1;
+    scale = Math.min(Math.max(0.5, scale), 3);
+    el.dataset.scale = scale.toFixed(3);
+    applyTransform(el);
+  }, { passive:false });
+}
+
+function closeModal(){
+  modal.classList.remove('open');
+  modal.setAttribute('aria-hidden','true');
+}
+modalClose.addEventListener('click', closeModal);
+// close on backdrop click
+document.getElementById('storyModal').addEventListener('click', (e)=>{
+  if(e.target.id==='storyModal') closeModal();
+});
+// keyboard
+document.addEventListener('keydown', e=>{
+  if(modal.getAttribute('aria-hidden')==='true') return;
+  if(e.key==='Escape') closeModal();
+});
+
+/* Lead form (placeholder) */
+document.querySelector('.lead-form')?.addEventListener('submit', e=>{
+  e.preventDefault();
+  alert('Submitted! We will connect shortly.');
+});
+</script>
+</body>
+</html>

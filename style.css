@@ -1,0 +1,140 @@
+/* ===== Palette ===== */
+:root{
+  --green-900:#1B3B32;   /* primary dark */
+  --green-700:#3F5F54;   /* secondary */
+  --gold-600:#C1A465;    /* accent */
+  --surface:#F7F6F4;     /* off-white */
+  --ink:#222;            /* main text */
+  --muted:#555;          /* secondary text */
+  --border:#E5E2DC;
+}
+
+/* ===== Base ===== */
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  color:var(--ink);
+  background:#fff;
+  line-height:1.6;
+}
+h1,h2,h3{font-family:"Playfair Display",serif; color:var(--green-900); margin:0 0 .5rem}
+h1{font-size:44px}
+h2{font-size:32px}
+h3{font-size:22px}
+.section{padding:72px 0}
+.container{max-width:1100px;margin:0 auto;padding:0 20px}
+
+/* ===== Header ===== */
+.site-header{
+  position:fixed; top:0; left:0; right:0; z-index:10;
+  background:rgba(27,59,50,.7); backdrop-filter:saturate(130%) blur(8px);
+  color:#fff;
+}
+.header-inner{display:flex;align-items:center;justify-content:space-between; height:64px;}
+.logo{font-family:"Playfair Display",serif; font-weight:700; letter-spacing:1px;}
+.top-actions a{color:#fff; text-decoration:none; margin-left:16px; font-weight:600}
+
+/* ===== Hero ===== */
+.hero{position:relative; height:86vh; min-height:520px; color:#fff}
+.hero-video{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:brightness(.6)}
+.hero-overlay{position:relative; z-index:1; padding-top:120px; max-width:780px}
+.hero h1{color:#fff}
+.subhead{color:#f2f2f2; margin:10px 0 18px}
+.cta-row{display:flex; gap:12px; flex-wrap:wrap}
+.btn{
+  display:inline-block; padding:14px 18px; border-radius:10px;
+  text-decoration:none; font-weight:700; transition:transform .15s ease, box-shadow .2s ease, background .2s ease, color .2s ease;
+}
+.btn-primary{background:var(--gold-600); color:#1b1b1b; box-shadow:0 6px 16px rgba(193,164,101,.35)}
+.btn-primary:hover{transform:translateY(-1px); box-shadow:0 10px 22px rgba(193,164,101,.45)}
+.btn-outline{border:2px solid #fff; color:#fff}
+.btn-outline:hover{background:#fff; color:var(--green-900)}
+.cta-micro{opacity:.9; margin-top:8px}
+
+/* ===== USPs Slider ===== */
+.section-title{margin-bottom:22px}
+.slider{position:relative; overflow:hidden}
+.track{display:flex; gap:18px; transition:transform .3s ease}
+.card{
+  min-width:280px; flex:0 0 33%;
+  border:1px solid var(--border); border-radius:16px; padding:18px; background:#fff;
+  box-shadow:0 6px 18px rgba(0,0,0,.03);
+}
+.arrow{
+  position:absolute; top:50%; transform:translateY(-50%);
+  border:0; background:#fff; width:40px; height:40px; border-radius:50%;
+  box-shadow:0 6px 18px rgba(0,0,0,.12); cursor:pointer;
+}
+.arrow.left{left:-4px} .arrow.right{right:-4px}
+
+/* ===== Metrics ===== */
+.metrics{background:var(--surface); padding:36px 0}
+.metrics-grid{
+  display:grid; gap:14px;
+  grid-template-columns: repeat(6, 1fr);
+}
+.metric{background:#fff; border:1px solid var(--border); border-radius:12px; padding:14px; text-align:center}
+.metric strong{display:block; font-size:20px; color:var(--green-900)}
+.metric span{font-size:13px; color:var(--muted)}
+
+/* ===== Stories ===== */
+.story{border-top:1px solid var(--border); padding:24px 0}
+.story-card{display:flex; gap:18px; align-items:center}
+.story-card img{width:280px; height:180px; object-fit:cover; border-radius:12px; border:1px solid var(--border)}
+.story-meta h3{margin:0 0 6px}
+.meta{color:var(--muted); margin:0 0 6px}
+.quote{font-family:"Playfair Display",serif; color:var(--green-700); margin:0 0 10px}
+.toggle-story{
+  border:1px solid var(--green-900); color:var(--green-900); background:#fff; padding:8px 12px; border-radius:8px; font-weight:700; cursor:pointer;
+  transition:background .2s ease, color .2s ease, transform .1s ease;
+}
+.toggle-story:hover{background:var(--green-900); color:#fff; transform:translateY(-1px)}
+.story-extra{display:none; margin:18px 0 0}
+.story-extra.open{display:block; animation:reveal .25s ease}
+@keyframes reveal{from{opacity:0; transform:translateY(-6px)} to{opacity:1; transform:translateY(0)}}
+.visual-flow{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px}
+.visual-flow img{width:calc(33% - 6px); min-width:220px; border-radius:10px; border:1px solid var(--border)}
+
+/* ===== Process ===== */
+.timeline{list-style:none; padding:0; margin:0; border-left:4px solid var(--green-900)}
+.timeline li{padding:0 0 22px 16px; position:relative}
+.timeline li::before{
+  content:""; position:absolute; left:-10px; top:6px; width:14px; height:14px; border-radius:50%; background:var(--gold-600); box-shadow:0 0 0 3px #fff;
+}
+.badge{display:inline-block; background:var(--surface); border:1px solid var(--border); padding:6px 10px; border-radius:10px; margin-top:6px}
+.badge-accent{background:#fff3e0; border-color:#f3d3a2; color:#7a4c00;}
+
+/* ===== Red Dot ===== */
+.reddot{background:var(--surface)}
+.reddot-inner{position:relative; text-align:center; padding:52px 0}
+.dot{width:12px; height:12px; background:#C23030; border-radius:50%; margin:0 auto 10px; animation:pulse 3s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
+.reddot-title{max-width:760px; margin:0 auto 8px}
+.reddot-copy{max-width:780px; margin:0 auto; color:var(--muted)}
+
+/* ===== Final CTA ===== */
+.cta{background:var(--green-900); color:#fff; text-align:center; padding:56px 0}
+.cta .btn-primary{background:var(--gold-600); color:#1b1b1b}
+.cta .btn-outline{border-color:#fff; color:#fff}
+.cta .btn-outline:hover{background:#fff; color:var(--green-900)}
+
+/* ===== Form ===== */
+.form-section{background:#fff}
+.lead-form{display:grid; gap:12px; grid-template-columns:repeat(2, 1fr)}
+.lead-form label{display:flex; flex-direction:column; gap:6px; font-weight:600}
+.lead-form input, .lead-form select{
+  padding:10px 12px; border:1px solid var(--border); border-radius:10px; font:inherit
+}
+.form-note{color:var(--muted)}
+.site-footer{background:#0f221d; color:#cfd7d4; padding:18px 0; text-align:center}
+
+/* ===== Responsive ===== */
+@media (max-width: 900px){
+  h1{font-size:34px} h2{font-size:26px}
+  .card{flex:0 0 80%}
+  .metrics-grid{grid-template-columns: repeat(2, 1fr)}
+  .story-card{flex-direction:column; align-items:flex-start}
+  .lead-form{grid-template-columns:1fr}
+  .hero{height:78vh}
+}
